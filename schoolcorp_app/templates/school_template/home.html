@@ -1,0 +1,148 @@
+{% extends 'school_template/school_base.html'  %}
+
+{% block main_content %}
+{% load static %}
+
+<div class="central-meta item">
+    <div class="new-postbox">
+        <figure>
+            {% if school.profile_pic %}
+            <img src="{{ school.profile_pic.url }}" alt="">
+            {% else %}
+            <img src="{% static 'media/img_2.png' %}" alt="">
+            {% endif %}
+        </figure>
+        <div class="newpst-input">
+            <form method="post" action="{% url 'doPostt' %}" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <textarea rows="2" name="postText" placeholder="write something"></textarea>
+                <div class="attachments">
+                    <ul>
+                        <li>
+                            <i class="fa fa-image"></i>
+                            <label class="fileContainer">
+                                <input name="postImg" type="file">
+                                 <input type="hidden" name="userID" value="{{ school.admin_id }}">
+                            </label>
+                        </li>
+                        <li>
+                            <button type="submit">Publish</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="loadMore">
+   
+    
+   
+    {% for post in posts %}
+    <div class="central-meta item">
+        <div class="user-post">
+            <div class="friend-info">
+                <figure>
+                    {% if post.user.teacher.profile_pic %}
+                        <img src="{{ post.user.teacher.profile_pic.url }}" alt="Image">
+                    {% elif post.user.employee.profile_pic %}
+                        <img src="{{ post.user.employee.profile_pic.url }}" alt="Image">
+                    {% elif post.user.school.profile_pic %}
+                        <img src="{{ post.user.school.profile_pic.url }}" alt="Image">
+                    {% endif %}
+                </figure>
+                <div class="friend-name">
+                    <ins><a title="">{{ post.user.first_name }} {{ post.user.last_name }}</a></ins>
+                    <span>published: {{ post.created_at }}</span>
+                </div>
+                <div class="description">
+                    <p>{{ post.text_post }}</p>
+                </div>
+                <div class="post-meta">
+                    {% if post.post_img %}
+                        <img src="{{ post.post_img.url }}" alt="Post Image">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="we-video-info">
+            <ul>
+                <li>
+                    {{ post.number_of_likes }} 
+                    <form action="{% url 'post_like' post.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">
+                            {% if request.user in post.likes.all %}
+                                Unlike
+                            {% else %}
+                                Like
+                            {% endif %}
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="coment-area">
+            <ul class="we-comet">
+                <li>
+                    <div class="comet-avatar">
+                        <img src="images/resources/comet-1.jpg" alt="">
+                    </div>
+                    <div class="we-comment">
+                        <div class="coment-head">
+                            <h5><a href="time-line.html" title="">Jason borne</a></h5>
+                            <span>1 year ago</span>
+                            <!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
+                        </div>
+                        <p>we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post</p>
+                    </div>
+                    
+                </li>
+               
+                <li>
+                    <a href="#" title="" class="showmore underline">more comments</a>
+                </li>
+                <li class="post-comment">
+                    <div class="comet-avatar">
+                        {% if school.profile_pic %}
+                        <img src="{{ school.profile_pic.url }}" alt="">
+                        {% else %}
+                        <img src="{% static 'media/img_2.png' %}" alt="Default Image">
+                        {% endif %}
+
+                    </div>
+                    <div class="post-comt-box">
+                        <form method="post">
+                            <textarea placeholder="Post your comment"></textarea>
+                            <div class="add-smiles">
+                                <span class="em em-expressionless" title="add icon"></span>
+                            </div>
+                            <div class="smiles-bunch">
+                                <i class="em em---1"></i>
+                                <i class="em em-smiley"></i>
+                                <i class="em em-anguished"></i>
+                                <i class="em em-laughing"></i>
+                                <i class="em em-angry"></i>
+                                <i class="em em-astonished"></i>
+                                <i class="em em-blush"></i>
+                                <i class="em em-disappointed"></i>
+                                <i class="em em-worried"></i>
+                                <i class="em em-kissing_heart"></i>
+                                <i class="em em-rage"></i>
+                                <i class="em em-stuck_out_tongue"></i>
+                            </div>
+                            <button type="submit"></button>
+                        </form>	
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    {% endfor %}
+</div>
+
+
+{% endblock main_content%}

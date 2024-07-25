@@ -1,0 +1,157 @@
+{% extends 'teacher_template/teacher_base.html'  %}
+
+{% block main_content %}
+{% load static %}
+
+<div class="central-meta item">
+    <div class="new-postbox">
+        <figure>
+            {% if teacher.profile_pic %}
+            <img src="{{ teacher.profile_pic.url }}" alt="">
+            {% else %}
+            <img src="{% static 'media/img_2.png' %}" alt="">
+            {% endif %}
+        </figure>
+        <div class="newpst-input">
+            <form method="post" action="{% url 'doPostt' %}" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <textarea rows="2" name="postText" placeholder="write something"></textarea>
+                <div class="attachments">
+                    <ul>
+                        <li>
+                            <i class="fa fa-image"></i>
+                            <label class="fileContainer">
+                                <input name="postImg" type="file">
+                                 <input type="hidden" name="userID" value="{{ teacher.admin_id }}">
+                            </label>
+                        </li>
+                        <li>
+                            <button type="submit">Publish</button>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="loadMore">
+   
+    
+   
+    {% for post in posts %}
+    <div class="central-meta item">
+        <div class="user-post">
+            <div class="friend-info">
+                <figure>
+                    {% if post.user.teacher.profile_pic %}
+                        <img src="{{ post.user.teacher.profile_pic.url }}" alt="Image">
+                    {% elif post.user.employee.profile_pic %}
+                        <img src="{{ post.user.employee.profile_pic.url }}" alt="Image">
+                    {% elif post.user.school.profile_pic %}
+                        <img src="{{ post.user.school.profile_pic.url }}" alt="Image">
+                    {% endif %}
+                </figure>
+                <div class="friend-name">
+                    <ins><a title="">{{ post.user.first_name }} {{ post.user.last_name }}</a></ins>
+                    <span>published: {{ post.created_at }}</span>
+                </div>
+                <div class="description">
+                    <p>{{ post.text_post }}</p>
+                </div>
+                <div class="post-meta">
+                    {% if post.post_img %}
+                        <img src="{{ post.post_img.url }}" alt="Post Image">
+                    {% endif %}
+                </div>
+                <!-- Three-dot menu for delete option -->
+                <div class="post-options">
+                    <div class="dropdown">
+                        <button class="dropbtn">⋮</button>
+                        <div class="dropdown-content">
+                            <form action="{% url 'delete_post' post.id %}" method="post" class="delete-post-form">
+                                {% csrf_token %}
+                                <button type="submit" class="delete-post-btn">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="we-video-info">
+            <ul>
+                <li>
+                   <span id="like-{{ post.id }}">
+    <span class="likes-count">{{ post.number_of_likes }}</span>
+    <a href="#" class="like-button like-link" data-post-id="{{ post.id }}" data-url="{% url 'post_like' post.id %}">
+        <meta name="csrf-token" content="{{ csrf_token }}">
+        <?xml version="1.0" encoding="utf-8"?>
+        <svg width="20" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+            <path d="M320 1344q0-26-19-45t-45-19q-27 0-45.5 19t-18.5 45q0 27 18.5 45.5t45.5 18.5q26 0 45-18.5t19-45.5zm160-512v640q0 26-19 45t-45 19h-288q-26 0-45-19t-19-45v-640q0-26 19-45t45-19h288q26 0 45 19t19 45zm1184 0q0 86-55 149 15 44 15 76 3 76-43 137 17 56 0 117-15 57-54 94 9 112-49 181-64 76-197 78h-129q-66 0-144-15.5t-121.5-29-120.5-39.5q-123-43-158-44-26-1-45-19.5t-19-44.5v-641q0-25 18-43.5t43-20.5q24-2 76-59t101-121q68-87 101-120 18-18 31-48t17.5-48.5 13.5-60.5q7-39 12.5-61t19.5-52 34-50q19-19 45-19 46 0 82.5 10.5t60 26 40 40.5 24 45 12 50 5 45 .5 39q0 38-9.5 76t-19 60-27.5 56q-3 6-10 18t-11 22-8 24h277q78 0 135 57t57 135z"/>
+        </svg>
+    </a>
+</span>
+
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="coment-area" id="comments-{{ post.id }}">
+            <ul class="we-comet">
+                {% for comment in post.comments.all %}
+                    <li>
+                        <div class="comet-avatar">
+                            {% if comment.user.teacher.profile_pic %}
+                                <img src="{{ comment.user.teacher.profile_pic.url }}" alt="Image">
+                            {% elif comment.user.employee.profile_pic %}
+                                <img src="{{ comment.user.employee.profile_pic.url }}" alt="Image">
+                            {% elif comment.user.school.profile_pic %}
+                                <img src="{{ comment.user.school.profile_pic.url }}" alt="Image">
+                            {% endif %}
+                        </div>
+                        <div class="we-comment">
+                            <div class="coment-head">
+                                <h5><a title="">{{ comment.user.first_name }} {{ comment.user.last_name }}</a></h5>
+                                <span>{{ comment.date_added }}</span>
+                                <!-- Three-dot menu for delete comment option -->
+                                <div class="comment-options">
+                                    <div class="dropdown">
+                                        <button class="dropbtn">⋮</button>
+                                        <div class="dropdown-content">
+                                            <form action="{% url 'delete_comment' comment.id %}" method="post" class="delete-comment-form">
+                                                {% csrf_token %}
+                                                <button type="submit" class="delete-comment-btn">Delete Comment</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>{{ comment.body }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <li class="post-comment">
+                <div class="comet-avatar">
+                    {% if teacher.profile_pic %}
+                        <img src="{{ teacher.profile_pic.url }}" alt="">
+                    {% else %}
+                        <img src="{% static 'edia/img_2.png' %}" alt="Default Image">
+                    {% endif %}
+                </div>
+                <div class="post-comt-box">
+                    <form id="comment-form" method="post" action="{% url 'add_comment' post.id %}" data-post-id="{{ post.id }}">
+                        {% csrf_token %}
+                        {{ comment_form.body }}
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>    
+                </li>
+            </div>
+    </div>
+{% endfor %}
+
+</div>
+
+
+{% endblock main_content%}

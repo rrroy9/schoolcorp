@@ -1,0 +1,24 @@
+{% extends 'Admin_template/admin_base.html' %}
+
+{% block main_content %}
+
+{% block page_title %}
+
+{% endblock page_title %}
+
+{% for contact in contacts %}
+<div class="public-user-block block">
+    <div class="row d-flex align-items-center">                   
+      <div class="col-lg-4 d-flex align-items-center">
+        <div class="order">{{ contact.id }}</div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="name"><strong class="d-block">{{ contact.full_name }}</strong><span class="d-block">{{ contact.email }}</span></a>
+      </div>
+      <div class="col-lg-4 text-center">
+        <div class="contributions">{{ contact.message }}</div>
+        <strong class="d-block">{{ contact.created_at }}</strong>
+      </div>
+      
+    </div>
+  </div>
+  {% endfor %}
+{% endblock main_content%}

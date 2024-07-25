@@ -1,0 +1,72 @@
+{% load static %}
+
+<section>
+    <div class="feature-photo">
+        <figure>
+            {% if school.banner %}
+                <img src="{{ school.banner.url }}" alt="Image from Database">
+            {% else %}
+                <img src="{% static 'media/img_3.png' %}" alt="Default Image">
+            {% endif %}
+        </figure>
+
+        <form id="editSchoolPhotoForm" class="edit-phto" action="{% url 'update_banner' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <i class="fa fa-camera-retro"></i>
+            <label class="fileContainer">
+                Edit Cover Photo
+                <input type="file" name="banner" id="schoolBannerInput" onchange="showUploadButton('schoolBannerInput', 'schoolUploadButton')"/>
+            </label>
+            <button type="submit" id="schoolUploadButton" style="display: none;">Upload</button>
+        </form>
+
+        <div class="container-fluid">
+            <div class="row merged">
+                <div class="col-lg-2 col-sm-3">
+                    <div class="user-avatar">
+                        <figure>
+                            {% if school.profile_pic %}
+                                <img src="{{ school.profile_pic.url }}" alt="Image from Database">
+                            {% else %}
+                                <img src="{% static 'media/img_2.png' %}" alt="Default Image">
+                            {% endif %}
+
+                            <form id="editProfilePicForm" class="edit-phto" action="{% url 'update_school_profile_pic' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <i class="fa fa-camera-retro"></i>
+                                <label class="fileContainer">
+                                    Edit Profile Picture
+                                    <input type="file" name="profile_pic" id="profilePicInput" onchange="showUploadButton('profilePicInput', 'profilePicUploadButton')"/>
+                                </label>
+                                <button type="submit" id="profilePicUploadButton" style="display: none;">Upload</button>
+                            </form>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-sm-9">
+                    <div class="timeline-info">
+                        <ul>
+                            <li class="admin-name">
+                                <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+                                <span></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function showUploadButton(inputId, buttonId) {
+        var fileInput = document.getElementById(inputId);
+        var uploadButton = document.getElementById(buttonId);
+    
+        if (fileInput.files && fileInput.files[0]) {
+            uploadButton.style.display = 'block';
+        } else {
+            uploadButton.style.display = 'none';
+        }
+    }
+    </script>

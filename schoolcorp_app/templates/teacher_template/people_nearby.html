@@ -1,0 +1,37 @@
+{% extends 'teacher_template/teacher_base.html'  %}
+
+{% block main_content %}
+{% load static %}
+<div class="central-meta">
+									
+									<ul class="nearby-contct">
+                                        {% for nearby_teacher in nearby_teachers %}
+                                        <li>
+                                            <div class="nearly-pepls">
+                                                <figure>
+                                                    {% if teacher.profile_pic %}
+                <img src="{{ teacher.profile_pic.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="{% static 'media/img_2.png' %}" alt="Default Image">
+                {% endif %}
+                                                </figure>
+                                                <div class="pepl-info">
+                                                    <h4><a  title="">{{ nearby_teacher.admin.first_name }} {{ nearby_teacher.admin.last_name }}</a></h4>
+                                                    <span>{{ nearby_teacher.designation }}</span>
+                                                    <em><i class="fa fa-map-marker"></i>{{ nearby_teacher.city }}, {{ nearby_teacher.state }}</em>
+                                                    
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+									
+										
+										
+										
+										
+										
+
+									</ul>
+								</div>
+
+                                {% endblock main_content%}    

@@ -1,0 +1,86 @@
+{% load static %}
+
+<section class="banner-area relative" id="home">	
+  
+  <div class="overlay overlay-bg"></div>
+  <div class="container">
+    <div class="row fullscreen d-flex align-items-center justify-content-center">
+      <div class="banner-content col-lg-12">
+        <!-- <h1 class="text-white">
+          Looking for jobs in Education? <br><span class="typing-animation"><span id="typing-text"></span></span>
+      </h1> -->
+      
+      <div class="creative__text--animation-1 ">
+        Looking for jobs in
+        <span style="--i: 0;" data-text="School?">School?</span>
+        <span style="--i: 1;" data-text="College?">College?</span>
+        <span style="--i: 2;" data-text="Institute?">Institute?</span>
+        <span style="--i: 3;" data-text="University?">University?</span>
+      </div>
+        
+          <div class="row justify-content-center form-wrap">
+            
+           
+            
+            <div class="col-lg-2 form-cols">
+              <button type="button" id="open-modal" class="btn btn-info">
+                  I want to join
+              </button>
+          </div>
+          
+       
+        
+       
+      </div>											
+    </div>
+  </div>
+  <div class="modal__container" id="modal-container">
+    <div class="modal__content">
+      
+        <div class="modal__close close-modal" title="Close">
+            <i class="bx bx-x"></i>
+        </div>
+        <h1 class="modal__title">Register</h1>
+        <form id="registration-form"  method="post">
+          {% csrf_token %}
+        <meta name="csrf-token" content="{{ csrf_token }}">
+        <input type="text" id="first_name" name="first_name" placeholder="Enter Your First name" class="reg" />
+        <input type="text" id="last_name" name="last_name" placeholder="Enter Your Last name" class="reg" />
+        <input type="text" id="usernameInput" name="username" placeholder="Enter Your username" class="reg" />
+        <span id="uname" class="error-message" style="color: red;"></span>
+        <input type="email" id="emailInput" name="email" placeholder="Enter Your email" class="reg" />
+        <span id="emailerror" class="error-message" style="color: red";></span>
+        <input type="password" id="passwordInput" name="password" placeholder="Enter Your password" class="reg" />
+        <button class="modal__button modal__button-width" type="submit" id="otpButton">Send OTP <i class="bx bx-chevrons-right bx-fade-right"></i></button>
+        </form>  
+        <form id="otpForm"   style="display: none;">
+          {% csrf_token %}
+          <h2>Verify OTP</h2>
+          <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+          <div id="successMessage" style="color: green; display: none;">User created successfully</div>
+         
+          <input type="number" maxlength="6" id="otp" name="otp" placeholder="Enter OTP" class="reg" />
+          <button class="modal__button modal__button-width" type="submit">Verify</button>
+        </form>
+      </div>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->/
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

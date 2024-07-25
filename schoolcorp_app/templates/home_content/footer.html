@@ -1,0 +1,80 @@
+{% load static %}
+
+
+<footer class="footer-section">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget company-intro-widget">
+              <a href="{% url 'index' %}" class="site-logo"><img src="{% static 'media/logo.png' %}" alt="logo"></a>
+              <p>"For educators seeking job opportunities, SchoolCorp.in serves as the perfect gateway to apply for teaching positions. Explore an extensive array of listings tailored to match your skills and career aspirations. Whether you're interested in primary, secondary, or higher education roles, SchoolCorp.in has you covered. Start your journey towards finding the ideal teaching position today!"</p>
+              <ul class="company-footer-contact-list">
+                <li><i class="fas fa-phone"></i>+91 8709445334, +91 8406000666</li>
+                <li><i class="fas fa-clock"></i>Mon - Sat 8.00 - 18.00</li>
+              </ul>
+            </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget course-links-widget">
+              <h5 class="widget-title">Usefull Links</h5>
+              <ul class="courses-link-list">
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Home</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>about</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Contact</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>services</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Expert Team</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Latest News</a></li>
+              </ul>
+            </div>
+          </div><!-- widget end -->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget latest-news-widget">
+              <h5 class="widget-title">Links</h5>
+              <ul class="small-post-list">
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">July 18, 2023</a>
+                    <h6 class="small-post-title"><a href="#">SchoolCorp introduces new feature to help teachers secure jobs closer to home, enhancing work-life balance. The innovative tool streamlines job searches, facilitating teacher placement based on proximity to residence.</a></h6>
+                  </div>
+                </li>
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">July 28, 2023</a>
+                    <h6 class="small-post-title"><a href="#">SchoolCorp's new job placement feature prioritizes teacher well-being by matching them with schools near their homes, fostering a more balanced lifestyle.</a></h6>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget newsletter-widget">
+              <h5 class="widget-title">Newsletter</h5>
+              <div class="footer-newsletter">
+                <p>Sign Up to Our Newsletter to Get Latest Updates & Services</p>
+                <form class="news-letter-form">
+                  <input type="email" name="news-email" id="news-email" placeholder="Your email address">
+                  <input type="submit" value="Send">
+                </form>
+              </div>
+            </div>
+          </div><!-- widget end -->
+        </div>
+      </div> 
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-sm-left text-center">
+              <span class="copy-right-text">©  <a href="{% url 'index' %}">Schoolcorp.in</a> All Rights Reserved.</span>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <ul class="terms-privacy d-flex justify-content-sm-end justify-content-center">
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div><!-- footer-bottom end -->
+  </footer>

@@ -1,0 +1,54 @@
+{% load static %}
+
+							
+
+									<div class="widget">
+										<h4 class="widget-title">Shortcuts</h4>
+										<ul class="naves">
+											<li>
+												<i class="ti-clipboard"></i>
+												<a href="{% url 'school_home' %}" title="">Home</a>
+											</li>
+											<li>
+												<i class="ti-user"></i>
+												<a href="{% url 'profile' %}" title="">Profile</a>
+											</li>
+											<li>
+												<i class="ti-image"></i>
+												<a href="{% url 'timeline_photo' %}" title="">My Post</a>
+											</li>
+											<li>
+												<i class="ti-user"></i>
+												<a href="{% url 'about' %}" title="">About</a>
+											</li>
+											<li>
+												<i class="ti-image"></i>
+												<a href="{% url 'resume' %}" title="">My Resume</a>
+											</li> 
+											<li>
+												<i class="ti-more-alt"></i>
+												<a href="{% url 'change_password' %}" title="">Change Password</a>
+											</li>
+											<li>
+												<i class="ti-comments-smiley"></i>
+												<a href="" title="">Recent activity</a>
+											</li>
+											<li>
+												<i class="ti-bell"></i>
+												<a href="{% url 'notification' %}" title="">Notifications</a>
+											</li>
+											<li>
+												<i class="ti-share"></i>
+												<a href="{% url 'people_nearby' %}" title="">People Nearby</a>
+											</li>
+											<!-- <li>
+												<i class="fa fa-bar-chart-o"></i>
+												<a href="insights.html" title="">insights</a>
+											</li> -->
+											<li>
+												<i class="ti-power-off"></i>
+												<a href="{% url 'logout_user' %}" title="">Logout</a>
+											</li>
+										</ul>
+									</div>
+                            

@@ -1,0 +1,13 @@
+{% load static %}
+
+<nav id="sidebar">
+        <!-- Sidebar Header-->
+       
+        <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+        <ul class="list-unstyled">
+                <li class="active"><a href="{% url 'admin_home' %}"> <i class="icon-home"></i>Home </a></li>
+                <li><a href="{% url 'add_employee' %}"> <i class="icon-grid"></i>Add employee </a></li>
+                <li><a href="{% url 'add_schools' %}"> <i class="icon-grid"></i>Add School </a></li>
+                <li><a href="{% url 'message' %}"> <i class="icon-grid"></i>Message </a></li>
+        </ul>
+      </nav>

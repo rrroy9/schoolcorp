@@ -1,0 +1,27 @@
+<!-- {% extends 'teacher_template/teacher_base.html'  %}
+
+{% block main_content %}
+{% load static %}
+<div class="central-meta">
+    <div class="editing-interest">
+        <h5 class="f-title"><i class="ti-bell"></i>RECENT ACTIVITY </h5>
+        <div class="notification-box">
+            <ul>
+                {% for activity in activities %}
+                <li>
+                    {% if activity.post.post_img %}
+                    <figure><img src="{{ activity.post.post_img.url }}" alt=""></figure>
+                    {% endif %}
+                    <div class="notifi-meta">
+                        <p> {{ activity.description }}</p>
+                        <span>{{ activity.created_at }}</span>
+                    </div>
+                    <i class="del fa fa-close"></i>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>	
+
+{% endblock main_content%}   -->

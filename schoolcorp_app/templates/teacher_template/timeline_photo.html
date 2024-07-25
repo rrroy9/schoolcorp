@@ -1,0 +1,23 @@
+{% extends 'teacher_template/teacher_base.html'  %}
+
+{% block main_content %}
+{% load static %}
+
+    <div class="central-meta">
+        <ul class="photos">
+            {% for img_url in post_img %}
+    <li>
+        <a class="strip" href="/media/{{ img_url }}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+            <img src="/media/{{ img_url }}" alt="">
+        </a>
+    </li>
+    {% endfor %}
+        </ul>
+        <div class="lodmore"><button class="btn-view btn-load-more"></button></div>
+    </div><!-- photos -->
+
+
+
+
+
+{% endblock main_content%}  

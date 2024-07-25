@@ -1,0 +1,17 @@
+{% extends 'teacher_template/teacher_base.html'  %}
+
+{% block main_content %}
+{% load static %}
+
+<div class="central-meta">
+    <div class="editing-interest">
+        <h5 class="f-title"><i class="ti-image"></i>My Resume </h5>
+       
+        <iframe src="{{ teacher.resume.url }}" width="100%" height="600px"></iframe>
+   
+    </div>
+</div>
+<p>{{teacher.date_of_birth}}</p>
+
+
+{% endblock main_content%}  

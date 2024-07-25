@@ -1,0 +1,58 @@
+{% load static %}
+<section class="service-area section-gap" id="service">
+  <div class="container">
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-8 pb-40 header-text">
+          <h1>Contact Us</h1>
+          <p>
+              Feel free to reach out, your queries we'll address.
+          </p>
+      </div>
+
+<div class="contain">
+
+  <div class="wrapper">
+
+    <div class="form">
+      <h4>GET IN TOUCH</h4>
+      <h3 class="form-headline">Send us a message</h3>
+      <form id="submit-form" action="{% url 'contact_us' %}" method="post" style="display: grid;">
+        {% csrf_token %}
+        <p>
+          <input id="name" name="full_name" class="form-input" type="text" placeholder="Your Name*">
+          <small class="name-error"></small>
+        </p>
+        <p>
+          <input id="email" name="email" class="form-input" type="email" placeholder="Your Email*">
+          <small class="name-error"></small>
+        </p>
+       
+        <p class="full-width">
+          <textarea  minlength="20" name="message" id="message" cols="30" rows="7" placeholder="Your Message*" required></textarea>
+          <small></small>
+        </p>
+       
+        <p class="full-width">
+          <input type="submit" class="submit-btn" value="Submit" >
+         
+        </p>
+      </form>
+    </div>
+
+    <div class="contacts contact-wrapper">
+
+      <ul>
+        <li>We've driven online revenues of over <span class="highlight-text-grey">$2
+            billion</span> for our clients. Ready to know
+          how we can help you?</li>
+        <span class="hightlight-contact-info">
+          <li class="email-info"><i class="fa fa-envelope" aria-hidden="true"></i> support@schoolcorp.in</li>
+          <li><i class="fa fa-phone" aria-hidden="true"></i> <span class="highlight-text">+91 8709445334, +91 8406000666</span></li>
+        </span>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,262 @@
+.signup-form {
+    position: fixed;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 3px solid #999;
+  }
+  
+  .h-center {
+    display: block;
+    clear: both;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  
+  .gray{
+    color: #999;
+    font-weight: 100;
+  }
+  
+  input, select {
+    display: inline-block;
+    transition: 0.15s ease-out all;
+    outline: none;
+    background-color: transparent;
+  }
+  
+  .fancy-form {
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+    
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  
+    flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  .fancy-text-form {
+    margin: 20px 15px;
+    position: relative;
+  }
+  
+  .fancy-text-form > input,
+  .fancy-text-form > select{
+    border-bottom-width: 2px;
+    box-shadow: none;
+    outline: none;
+    padding: 15px 0px;
+    font-size: 20px;
+  }
+  
+  .white-blue-button {
+    color: #21a1e1;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #21a1e1;
+    transition: 0.15s all ease-in-out;
+  }
+  
+  .white-blue-box {
+    color: #21a1e1;
+    width: 245px;
+    border: 2px solid transparent;
+    border-bottom-color: #21a1e1;
+    display: inline-block;
+    transition: 0.15s ease-out all;
+  }
+  
+  .white-blue-select {
+    color: #21a1e1;
+    font-size: 20px;
+    width: 245px;
+    border: 2px solid transparent;
+    border-bottom-color: #21a1e1;
+    -moz-appearance:  none;
+  }
+  
+  .fancy-text-form > input + label,
+  .fancy-text-form > select + label{
+    position: absolute;
+    color: #777;
+    font-style: italic;
+    left: 0px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 0.15s ease-out all;
+  }
+  
+  .white-blue-button:hover{
+    color: #fff;
+    background-color: #21a1e1;
+  }
+  
+  .med-box {
+    width: 245px;
+    font-size: 20px;
+  }
+  
+  .white-blue-box:focus + label,
+  .white-blue-select:focus + label,
+  input.focusFancy + label,
+  select.focusFancy + label{
+    top: -10px;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .error {
+    border-bottom-color: red;
+  }
+  
+  
+  
+  /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Data Tooltip////////////////////////////*/
+  
+  
+  
+  
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  header,
+  .demo,
+  .demo p {
+    margin: 4em 0;
+    text-align: center;
+  }
+  
+  [data-tooltip],
+  .tooltip {
+    position: relative;
+  }
+  
+  /* Base styles for the entire tooltip */
+  [data-tooltip]:before,
+  [data-tooltip]:after,
+  .tooltip:before,
+  .tooltip:after {
+    position: absolute;
+    visibility: hidden;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: 
+        opacity 0.2s ease-in-out,
+          visibility 0.2s ease-in-out,
+          -webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+      -moz-transition:    
+          opacity 0.2s ease-in-out,
+          visibility 0.2s ease-in-out,
+          -moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+      transition:         
+          opacity 0.2s ease-in-out,
+          visibility 0.2s ease-in-out,
+          transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform:    translate3d(0, 0, 0);
+    transform:         translate3d(0, 0, 0);
+    pointer-events: none;
+  }
+  
+  /* Show the entire tooltip on hover and focus */
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after,
+  [data-tooltip]:focus:before,
+  [data-tooltip]:focus:after,
+  .tooltip:hover:before,
+  .tooltip:hover:after,
+  .tooltip:focus:before,
+  .tooltip:focus:after {
+    visibility: visible;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  
+  /* Base styles for the tooltip's directional arrow */
+  .tooltip:before,
+  [data-tooltip]:before {
+    z-index: 1001;
+    border: 6px solid transparent;
+    background: transparent;
+    content: "";
+  }
+  
+  /* Base styles for the tooltip's content area */
+  .tooltip:after,
+  [data-tooltip]:after {
+    z-index: 1000;
+    padding: 8px;
+    width: 100px;
+    background-color: #000;
+    background-color: hsla(0, 0%, 20%, 1);
+    color: #fff;
+    content: attr(data-tooltip);
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  
+  /* Directions */
+  
+  /* Top (default) */
+  [data-tooltip]:before,
+  [data-tooltip]:after,
+  .tooltip:before,
+  .tooltip:after,
+  .tooltip-top:before,
+  .tooltip-top:after {
+    bottom: 100%;
+    left: 50%;
+  }
+  
+  [data-tooltip]:before,
+  .tooltip:before,
+  .tooltip-top:before {
+    margin-left: -6px;
+    margin-bottom: -12px;
+    border-top-color: #000;
+    border-top-color: hsla(0, 0%, 20%, 0.9);
+  }
+  
+  /* Horizontally align top/bottom tooltips */
+  [data-tooltip]:after,
+  .tooltip:after,
+  .tooltip-top:after {
+    margin-left: -60px;
+    text-align: center;
+  }
+  
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after,
+  [data-tooltip]:focus:before,
+  [data-tooltip]:focus:after,
+  .tooltip:hover:before,
+  .tooltip:hover:after,
+  .tooltip:focus:before,
+  .tooltip:focus:after,
+  .tooltip-top:hover:before,
+  .tooltip-top:hover:after,
+  .tooltip-top:focus:before,
+  .tooltip-top:focus:after {
+    -webkit-transform: translateY(-12px);
+    -moz-transform:    translateY(-12px);
+    transform:         translateY(-12px); 
+  }
+  

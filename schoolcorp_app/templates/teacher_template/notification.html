@@ -1,0 +1,33 @@
+{% extends 'teacher_template/teacher_base.html'  %}
+
+{% block main_content %}
+{% load static %}
+<div class="central-meta">
+    <div class="editing-interest">
+        <h5 class="f-title"><i class="ti-bell"></i>All Notifications </h5>
+        <div class="notification-box">
+            <ul>
+                {% for notification in request.user.notifications.all|dictsortreversed:"created_at" %}
+                <li>
+                    <!-- <figure>
+                        {% if notification.user.teacher.profile_pic %}
+                        <img src="{{ notification.user.teacher.profile_pic.url }}" alt="Image">
+                    {% elif notification.user.employee.profile_pic %}
+                        <img src="{{ notification.user.employee.profile_pic.url }}" alt="Image">
+                    {% elif notification.user.school.profile_pic %}
+                        <img src="{{ notification.user.school.profile_pic.url }}" alt="Image">
+                    {% endif %}
+                    </figure> -->
+                    <div class="notifi-meta">
+                        <p>{{ notification.text }}</p>
+                        <span>{{ notification.created_at|timesince }} ago</span>
+                    </div>
+                    <i class="del fa fa-close"></i>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock main_content%}    

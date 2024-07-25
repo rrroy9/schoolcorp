@@ -1,0 +1,18 @@
+{% extends 'forget_password_base.html' %}
+{% block content %}
+    
+        <h2>Request OTP</h2>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form class="login100-form validate-form" method="post">
+            {% csrf_token %}
+           
+            <div class="wrap-input100 validate-input" data-validate="Enter email">
+                {{ form.as_p }}
+                <span class="focus-input100" data-placeholder="&#xf207;"></span>
+            </div>
+            
+            <button class="login100-form-btn" type="submit">Request OTP</button>
+        </form>
+        {% endblock content %}

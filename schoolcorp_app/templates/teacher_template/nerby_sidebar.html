@@ -1,0 +1,25 @@
+{% load static %}
+<div class="widget stick-widget">
+    <h4 class="widget-title">Teacher nearby</h4>
+    <ul class="followers">
+        {% for teacher in nearby_teachers|slice:":5" %}
+        <li>
+            <figure> {% if teacher.profile_pic %}
+                <img src="{{ teacher.profile_pic.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="{% static 'media/img_2.png' %}" alt="Default Image">
+                {% endif %}</figure>
+            <div class="friend-meta">
+                <h4><a  title="">{{ teacher.admin.first_name }} {{ teacher.admin.last_name }}</a></h4>
+                <a  title="" class="underline">{{ teacher.designation }}</a><br>
+                <a  title="" class="underline"><i class="fa fa-map-marker"></i>{{ teacher.city }}, {{ teacher.state }}</a>
+               
+            </div>
+        </li>
+        {% endfor %}
+        
+        
+        
+        
+    </ul>
+</div>
